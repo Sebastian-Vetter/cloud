@@ -1,3 +1,5 @@
+package de.aptcode.minecraft.cloud.core.common.type
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
@@ -6,11 +8,10 @@
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.type
-
-enum class ServerType {
-    PAPER,
-    FOLIA,
-    PROXY
+enum class ServiceAction() {
+    STOP,
+    START,
+    RESTART,
+    DELETE,
+    CREATE
 }

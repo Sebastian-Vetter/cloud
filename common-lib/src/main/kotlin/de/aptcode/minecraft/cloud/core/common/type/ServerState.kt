@@ -10,7 +10,6 @@
 package de.aptcode.minecraft.cloud.core.common.type
 
 enum class ServerState {
-
     OFFLINE,
     ONLINE,
     STARTING,

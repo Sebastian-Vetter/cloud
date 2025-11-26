@@ -10,8 +10,6 @@
 package de.aptcode.minecraft.cloud.core.common.type
 
 enum class CommunicationEvent {
-
-    SERVER_STARTED,
     SERVER_STOPPED,
     SERVER_RESTARTED,
     SERVER_CREATED,
@@ -22,5 +20,4 @@ enum class CommunicationEvent {
     WORKER_CONNECTED,
     WORKER_CREATED,
     WORKER_DELETED
-
 }

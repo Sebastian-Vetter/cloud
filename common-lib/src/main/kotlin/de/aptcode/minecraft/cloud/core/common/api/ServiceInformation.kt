@@ -11,4 +11,12 @@ package de.aptcode.minecraft.cloud.core.common.api
 
 import de.aptcode.minecraft.cloud.core.common.type.ServerType
 
-data class MinecraftServer(val name: String, val version: String, val serverType: ServerType, val downloadUrl: String)
+data class ServiceInformation(
+    val serviceId: String,
+    val ram: Int,
+    val template: String,
+    val port: Int,
+    val serverType: ServerType,
+    val version: String,
+    val downloadUrl: String
+)

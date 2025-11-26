@@ -10,8 +10,6 @@
 package de.aptcode.minecraft.cloud.core.common.type
 
 enum class MessageState {
-
     ACCEPTED,
-    REJECTED,
-
+    REJECTED
 }
