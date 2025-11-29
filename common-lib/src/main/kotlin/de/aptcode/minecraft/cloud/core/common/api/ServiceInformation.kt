@@ -10,7 +10,9 @@
 package de.aptcode.minecraft.cloud.core.common.api
 
 import de.aptcode.minecraft.cloud.core.common.type.ServerType
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ServiceInformation(
     val serviceId: String,
     val ram: Int,
