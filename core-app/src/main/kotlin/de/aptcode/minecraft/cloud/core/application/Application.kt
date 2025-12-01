@@ -39,7 +39,11 @@ class CoreApplication : CliktCommand(name = "CoreApp", help = "Starts the cloud 
         logger.info("Starting application")
 
         embeddedServer(Netty, port = port, host = "0.0.0.0") {
-            // Konfiguriere Ktor Module
+            routing {
+                handle {
+                    call.respondText("Hello World!")
+                }
+            }
             module()
             configureRouting()
         }.start(wait = true)
@@ -48,13 +52,14 @@ class CoreApplication : CliktCommand(name = "CoreApp", help = "Starts the cloud 
 
 //loading ktor plugins
 fun Application.module() {
-    //Plugin laden für Ktor
+
 }
 
 fun Application.configureRouting() {
     routing {
         staticResources("static", "static")
 
+        //Todo: is routing needed here?
         get("/") {
             call.respondText("Hello World!")
         }

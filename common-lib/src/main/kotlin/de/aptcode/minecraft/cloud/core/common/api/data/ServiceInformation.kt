@@ -7,7 +7,7 @@
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
 
-package de.aptcode.minecraft.cloud.core.common.api
+package de.aptcode.minecraft.cloud.core.common.api.data
 
 import de.aptcode.minecraft.cloud.core.common.type.ServerType
 import kotlinx.serialization.Serializable

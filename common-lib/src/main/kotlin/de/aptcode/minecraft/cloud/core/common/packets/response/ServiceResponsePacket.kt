@@ -1,3 +1,7 @@
+package de.aptcode.minecraft.cloud.core.common.packets.response
+
+import kotlinx.serialization.Serializable
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
@@ -6,11 +10,6 @@
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.packets
-
-import kotlinx.serialization.Serializable
-
 @Serializable
 data class ServiceResponsePacket(
     val requestUniqueId: String,

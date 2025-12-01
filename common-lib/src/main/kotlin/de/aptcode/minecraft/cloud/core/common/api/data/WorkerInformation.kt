@@ -7,13 +7,13 @@
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
 
-package de.aptcode.minecraft.cloud.core.common.api
+package de.aptcode.minecraft.cloud.core.common.api.data
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class WorkerInformation(
-    val uniqueIdString: String,
+    val uniqueId: String,
     val ram: Double,
     val cpuPercentage: Double,
     val services: List<ServiceInformation>,
