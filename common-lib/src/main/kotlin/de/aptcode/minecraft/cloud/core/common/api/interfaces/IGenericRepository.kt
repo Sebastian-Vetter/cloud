@@ -12,6 +12,9 @@ interface IGenericRepository<T> {
     fun create(entity: T): T
     fun update(entity: T): T
     fun delete(entity: T): T
-    fun get(entity: T): T
-    fun getAll(entity: T): List<T>
+    fun get(id: String): T
+    fun getAll(): List<T>
+    fun getHighest()
+    fun getLowest(): T
+    fun getNewest(): T
 }
