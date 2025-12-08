@@ -34,6 +34,10 @@ subprojects {
         // Logging (Modernes Kotlin Logging)
         implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
         implementation("ch.qos.logback:logback-classic:1.5.6") // Die eigentliche Engine
+        implementation(platform("org.mongodb:mongodb-driver-bom:5.6.1"))
+        implementation("org.mongodb:bson-kotlin")
+        implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.2.0")
+
 
         // Testing (Mockk & JUnit 5)
         testImplementation("io.mockk:mockk:1.13.12")

@@ -16,10 +16,10 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-class RouteConfig(private val application: Application) {
+class RouteConfig() {
 
     //setup function for init all routes
-    fun setup() {
+    fun setup(application: Application) {
         application.routing {
             configure()
         }
@@ -30,8 +30,9 @@ class RouteConfig(private val application: Application) {
         //routes
 
 
-
         //default message
-        get { call.respond("Hello World!") }
+        get("/") {
+            call.respond("Hello World!")
+        }
     }
 }
