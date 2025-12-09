@@ -16,7 +16,7 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-class RouteConfig() {
+class RouteConfig {
 
     //setup function for init all routes
     fun setup(application: Application) {

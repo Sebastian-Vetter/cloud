@@ -9,13 +9,16 @@
 
 package de.aptcode.minecraft.cloud.core.application
 
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import de.aptcode.minecraft.cloud.core.application.core.CoreApplication
 import de.aptcode.minecraft.cloud.core.application.modules.KtorModule
 import de.aptcode.minecraft.cloud.core.application.modules.LoggerModule
 import de.aptcode.minecraft.cloud.core.application.modules.MongoDBModule
 import de.aptcode.minecraft.cloud.core.application.modules.RabbitMQModule
 import de.aptcode.minecraft.cloud.core.application.routing.RouteConfig
+import de.aptcode.minecraft.cloud.core.common.api.data.Ping
 import io.ktor.server.application.Application
+import kotlinx.coroutines.flow.toList
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 import org.slf4j.Logger
@@ -25,7 +28,7 @@ fun main(args: Array<String>) {
     CoreApplication().main(args)
 }
 
-fun Application.module() {
+suspend fun Application.module() {
     //koin modules
     koin {
         modules(KtorModule().initialize())
@@ -40,5 +43,12 @@ fun Application.module() {
 
     val logger by inject<Logger>()
     logger.info("Starting cloud system runner")
+
+    val mongoDatabase by inject<MongoDatabase>()
+    val collection = mongoDatabase.getCollection<Ping>("pings")
+
+    collection.find().toList().forEach {
+        logger.info(it.toString())
+    }
 
 }

@@ -7,6 +7,7 @@ import com.github.ajalt.clikt.parameters.types.int
 import de.aptcode.minecraft.cloud.core.application.module
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import kotlinx.coroutines.runBlocking
 
 /**
  * @author Sebastian Vetter
@@ -25,7 +26,9 @@ class CoreApplication : CliktCommand(name = "CoreApp", help = "Starts the cloud 
     override fun run() {
         //Running ktor server and add module
         embeddedServer(Netty, port = port, host = "0.0.0.0") {
-            module()
+            runBlocking {
+                module()
+            }
         }.start(wait = true)
     }
 }

@@ -18,7 +18,7 @@ class MongoDBModule {
         val mongoModule = module {
             //MongoDatabase connection
             single {
-                MongoClient.Factory.create("mongodb://localhost:27017")
+                MongoClient.create("mongodb+srv://vettersebastianbusiness_db_user:3w7s5voyiosulTY7@cluster.0pxkpsu.mongodb.net/?appName=CLUSTER7")
             }
 
             //MongoDatabase
