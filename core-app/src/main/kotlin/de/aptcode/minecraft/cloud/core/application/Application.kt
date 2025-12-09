@@ -16,7 +16,6 @@ import de.aptcode.minecraft.cloud.core.application.modules.LoggerModule
 import de.aptcode.minecraft.cloud.core.application.modules.MongoDBModule
 import de.aptcode.minecraft.cloud.core.application.modules.RabbitMQModule
 import de.aptcode.minecraft.cloud.core.application.routing.RouteConfig
-import de.aptcode.minecraft.cloud.core.common.api.data.Ping
 import io.ktor.server.application.Application
 import kotlinx.coroutines.flow.toList
 import org.koin.ktor.ext.inject
@@ -45,10 +44,5 @@ suspend fun Application.module() {
     logger.info("Starting cloud system runner")
 
     val mongoDatabase by inject<MongoDatabase>()
-    val collection = mongoDatabase.getCollection<Ping>("pings")
-
-    collection.find().toList().forEach {
-        logger.info(it.toString())
-    }
 
 }

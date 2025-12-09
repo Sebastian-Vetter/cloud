@@ -1,3 +1,7 @@
+package de.aptcode.minecraft.cloud.core.common.queue
+
+import kotlinx.coroutines.flow.Flow
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
@@ -6,13 +10,7 @@
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.api.interfaces
-
-import kotlinx.coroutines.flow.Flow
-
-
-interface RabbitMQService {
+interface RabbitMessageQueue {
 
     //non-blocking for ktor
     suspend fun sendMessage(message: String)

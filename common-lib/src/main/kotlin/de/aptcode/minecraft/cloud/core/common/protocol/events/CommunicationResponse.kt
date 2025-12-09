@@ -1,3 +1,5 @@
+package de.aptcode.minecraft.cloud.core.common.protocol.events
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
@@ -6,10 +8,7 @@
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.type
-
-enum class CommunicationEvent {
+enum class CommunicationResponse {
     SERVER_STOPPED,
     SERVER_RESTARTED,
     SERVER_CREATED,

@@ -1,16 +1,14 @@
+package de.aptcode.minecraft.cloud.core.common.model.states
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
- * @date 22.11.25
+ * @date 21.11.25
  * @project cloud
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.type
-
-enum class ServerType {
-    PAPER,
-    FOLIA,
-    PROXY
+enum class MessageState {
+    ACCEPTED,
+    REJECTED
 }

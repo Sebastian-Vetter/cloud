@@ -1,12 +1,8 @@
 package de.aptcode.minecraft.cloud.core.application.modules
 
-import com.mongodb.kotlin.client.coroutine.MongoClient
 import de.aptcode.minecraft.cloud.core.application.routing.RouteConfig
-import de.aptcode.minecraft.cloud.core.common.api.data.Ping
-import de.aptcode.minecraft.cloud.core.common.api.interfaces.IGenericRepository
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import org.slf4j.LoggerFactory
 
 /**
  * @author Sebastian Vetter

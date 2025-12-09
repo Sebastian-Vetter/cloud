@@ -7,6 +7,6 @@
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
 
-package de.aptcode.minecraft.cloud.core.common.api.data
+package de.aptcode.minecraft.cloud.core.common.model.player
 
-data class Ping(val uuid: String)
+data class CloudPlayer(val name: String)
