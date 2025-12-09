@@ -9,59 +9,46 @@
 
 package de.aptcode.minecraft.cloud.core.application
 
-import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.options.default
-import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.types.int
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
+import de.aptcode.minecraft.cloud.core.application.core.CoreApplication
+import de.aptcode.minecraft.cloud.core.application.modules.KtorModule
+import de.aptcode.minecraft.cloud.core.application.modules.LoggerModule
+import de.aptcode.minecraft.cloud.core.application.modules.MongoDBModule
+import de.aptcode.minecraft.cloud.core.application.modules.RabbitMQModule
+import de.aptcode.minecraft.cloud.core.application.routing.RouteConfig
+import de.aptcode.minecraft.cloud.core.common.api.data.Ping
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.http.content.staticResources
-import io.ktor.server.netty.Netty
-import io.ktor.server.response.respondText
-import io.ktor.server.routing.get
-import io.ktor.server.routing.routing
-import org.slf4j.LoggerFactory
+import kotlinx.coroutines.flow.toList
+import org.koin.ktor.ext.inject
+import org.koin.ktor.plugin.koin
+import org.slf4j.Logger
 
 //main function
 fun main(args: Array<String>) {
     CoreApplication().main(args)
 }
 
-//class for performing the application
-class CoreApplication : CliktCommand(name = "CoreApp", help = "Starts the cloud core application.") {
-
-    private val port by option("-p", "--port", help = "Port to bind to.").int().default(8080)
-
-    private val logger = LoggerFactory.getLogger("CoreApp")
-
-    override fun run() {
-        logger.info("Starting application")
-
-        embeddedServer(Netty, port = port, host = "0.0.0.0") {
-            routing {
-                handle {
-                    call.respondText("Hello World!")
-                }
-            }
-            module()
-            configureRouting()
-        }.start(wait = true)
+suspend fun Application.module() {
+    //koin modules
+    koin {
+        modules(KtorModule().initialize())
+        modules(LoggerModule().initialize())
+        modules(MongoDBModule().initialize())
+        modules(RabbitMQModule().initialize())
     }
-}
 
-//loading ktor plugins
-fun Application.module() {
+    //routeConfig setup
+    val routeConfig by inject<RouteConfig>()
+    routeConfig.setup(this);
 
-}
+    val logger by inject<Logger>()
+    logger.info("Starting cloud system runner")
 
-fun Application.configureRouting() {
-    routing {
-        staticResources("static", "static")
+    val mongoDatabase by inject<MongoDatabase>()
+    val collection = mongoDatabase.getCollection<Ping>("pings")
 
-        //Todo: is routing needed here?
-        get("/") {
-            call.respondText("Hello World!")
-        }
+    collection.find().toList().forEach {
+        logger.info(it.toString())
     }
+
 }
