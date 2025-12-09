@@ -1,25 +1,24 @@
+package de.aptcode.minecraft.cloud.core.common.model.services
+
+import de.aptcode.minecraft.cloud.core.common.model.worker.CloudWorker
+import kotlinx.serialization.Serializable
+
 /**
  * @author Sebastian Vetter
  * @company aptcode.de
- * @date 29.11.25
+ * @date 09.12.25
  * @project cloud
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-
-package de.aptcode.minecraft.cloud.core.common.api.data
-
-import kotlinx.serialization.Serializable
-
 @Serializable
-data class ServiceGroupInformation(
+data class CloudService(
     val groupUniqueId: String,
-    val workerInfo: WorkerInformation,
+    val workerInfo: CloudWorker,
     val groupName: String,
     val maxRam: Double,
     val maxCpu: Double,
     val maxServices: Int,
     val minServices: Int,
     val hostIp: String,
-
 )

@@ -1,4 +1,4 @@
-package de.aptcode.minecraft.cloud.core.common.type
+package de.aptcode.minecraft.cloud.core.common.model.states
 
 /**
  * @author Sebastian Vetter
@@ -8,10 +8,8 @@ package de.aptcode.minecraft.cloud.core.common.type
  *
  * Copyright (c) 2025 aptcode.de. All rights reserved.
  */
-enum class ServiceAction() {
-    STOP,
-    START,
-    RESTART,
-    DELETE,
-    CREATE
+enum class ServiceType {
+    PAPER,
+    FOLIA,
+    PROXY
 }
