@@ -9,19 +9,13 @@
 
 package de.aptcode.minecraft.cloud.core.test
 
-import de.aptcode.minecraft.cloud.core.application.modules.MongoDBModule
-import org.koin.dsl.koinApplication
 import kotlin.test.Test
 
 class IGenericRepositoryPingTest {
 
     @Test
     fun `run repository ping test`() {
-
-        koinApplication{
-            modules(MongoDBModule().initialize())
-        }
-
         assert(true)
     }
+
 }

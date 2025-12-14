@@ -29,7 +29,6 @@ class RouteConfig {
 
         //routes
 
-
         //default message
         get("/") {
             call.respond("Hello World!")
