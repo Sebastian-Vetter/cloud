@@ -9,16 +9,29 @@
 
 package de.aptcode.minecraft.cloud.core.application.modules
 
+import com.rabbitmq.client.ConnectionFactory
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import java.sql.Connection
 
 class RabbitMQModule {
 
     fun initialize(): Module {
-        val rabbitMQModule = module {
-            
+        val rabbitModule = module {
+            single<ConnectionFactory> {
+                ConnectionFactory().apply {
+                    host = "localhost"
+                    port = 5672
+                    username = "guest"
+                    password = "guest"
+                }
+            }
+
+            single<Connection> {
+                get<ConnectionFactory>().newConnection() as Connection
+            }
         }
 
-        return rabbitMQModule;
+        return rabbitModule;
     }
 }
